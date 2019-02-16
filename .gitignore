@@ -1,2 +1,6 @@
 example.tf
-.terraform/
+aws/.terraform/
+terraform.tfstate*
+dev/.terraform/
+base/.terraform/
+

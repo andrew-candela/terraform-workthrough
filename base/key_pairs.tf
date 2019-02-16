@@ -1,0 +1,4 @@
+resource "aws_key_pair" "admin-key" {
+  key_name   = "admin"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBS2SbbMrt5ovOj0ICqDorpbfRbXaJHXFCvAwZ1sM/4pt0bCCKjtgVlpTU54Jz5q+JjzwgOnbtZoNmD0WKa2S+NCjhtooURgLwbGS2kYgHxQlCmj5SYStB+sczH6MZxrxRGP+s8G6KwAQIBlhruk6oKaFJo8XmPy9cPLboHY+/74DYEDixom3j5nc1QWhgq8dY3SC+PsEdMbhxtarHz3FzFtn4QKkA7vVx+PQG6dffaTovjJp8aM2K1K8YoCkhZghJttVS2CQ+IIlzmEyYIRb0nl9swJon6gLMP+6aB30aEx7g2uLe9twUOPx5d2iVsGE2wbuNUFocI3WZuX7n7aeN acandela@Andrews-MacBook-Air.local"
+}
