@@ -39,3 +39,13 @@ EOL"
 # start the kafka service (run this as root)
 systemctl start kafka
 systemctl enable kafka
+
+# Kafka is installed in /opt/kafka/
+# have to update the config /opt/kafka/config/server.properties
+# to have unique broker ID and point to the correct zookeeper IP and port
+# change zookeeper.connect=<yourhost>:<yourport>
+
+# another reference is https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-ubuntu-18-04
+
+# Zookeeper might be installed in /opt/zookeeper-*
+# need to 

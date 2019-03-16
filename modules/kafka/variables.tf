@@ -17,12 +17,6 @@ variable "broker_key_name" {
   default     = "admin"
 }
 
-# variable "security_groups" {
-#   type        = "list"
-#   description = "security group for default VPC"
-#   default     = ["sg-561f3531"]
-# }
-
 variable "env" {}
 
 variable "broker_ami" {

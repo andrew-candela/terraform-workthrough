@@ -3,4 +3,4 @@ aws/.terraform/
 terraform.tfstate*
 dev/.terraform/
 base/.terraform/
-
+venv/

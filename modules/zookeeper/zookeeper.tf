@@ -15,6 +15,7 @@ resource "aws_instance" "zookeeper_node" {
   # vpc_security_group_ids = ["${var.security_group}"]
 
   tags {
+    # Name = "${var.env}-zookeeper_node-${self.id}"
     Name = "${var.env}-zookeeper_node"
     Type = "Kafka_testing"
   }
