@@ -7,7 +7,7 @@ I'd like to set up a kafka cluster and the supporting things. Eventually I might
 #### Update apt-get  
 Don't forget to run `sudo apt-get update` on the Amazon AMIs!
 
-##Configuring Kafka
+## Configuring Kafka
 These [digital ocean directions](https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-ubuntu-18-04) are the best I've found. [These directions](https://www.howtoforge.com/tutorial/ubuntu-apache-kafka-installation/) from howtoforge are OK.
 
 I used this [berkeley kafka binary mirror](http://mirrors.ocf.berkeley.edu/apache/kafka/2.2.0/kafka_2.12-2.2.0.tgz) to download the kafka binary.
