@@ -1,7 +1,7 @@
 module "zookeeper" {
   source        = "../modules/zookeeper"
   node_count    = 2
-  instance_type = "r4.large"
+  instance_type = "r5.large"
   env           = "dev"
   access_key    = "${var.access_key}"
   secret_key    = "${var.secret_key}"

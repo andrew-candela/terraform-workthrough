@@ -3,14 +3,13 @@
 ## and then will SSH into each node and edit the kafka and zookeeper config files
 ## this is a hack so that I don't need something like chef or ansible
 
+from remote_command_runner import RemoteCommandRunner
+
 KAFKA_SERVER_CONFIG_FILE = 'kafka_configs/server.properties'
 ZOOKEEPER_SERVER_CONFIG_FILE = 'zookeeper_configs/zoo.cfg'
-REMOTE_KAFKA_SERVER_CONFIG = '/opt/kafka/config/server.properties'
+REMOTE_KAFKA_SERVER_CONFIG = '/home/kafka/kafka/config/server.properties'
 REMOTE_ZOOKEEPER_CONFIG_FILE = '/opt/zookeeper-3.4.13/conf/zoo.cfg'
 REMOTE_ZOOKEEPER_ID_FILE = '/data/zookeeper/myid'
-ZOOKEEPER_PORT = 2181
-ZOOKEEPER_PEER_PORT = 2888
-ZOOKEEPER_LEADER_PORT = 3888
 
 def configure_kafka_node(node_details, node_summary):
   # read in the local config file and replace the variables with
@@ -28,12 +27,12 @@ def configure_kafka_node(node_details, node_summary):
     config = config.replace(replacement[0],replacement[1])
   # now execute the commands on the remote server
   rcr = RemoteCommandRunner(node_details['public_ip'])
-  resp = rcr.run_remote_command("echo -e '{config_contents}' > {config_file}".format(
+  resp = rcr.run_remote_command("sudo echo -e '{config_contents}' > {config_file}".format(
     config_contents = config,
     config_file = REMOTE_KAFKA_SERVER_CONFIG
     )
   )
-  return resp
+  resp = rcr.run_remote_command("sudo systemctl start kafka")
 
 def configure_zookeeper_node(node_details, node_summary):
   # read in the local zookeeper config, replace vars and replace remote template

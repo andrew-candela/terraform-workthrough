@@ -1,6 +1,5 @@
 from node_discovery import NodeDiscovery
-from remote_command_runner import RemoteCommandRunner
-from node_configuration import configure_kafka_node, configure_zookeeper_node
+from node_configuration import *
 
 def configure_nodes():
   nd = NodeDiscovery()

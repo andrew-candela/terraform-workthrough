@@ -1,5 +1,9 @@
 import boto3
 
+ZOOKEEPER_PORT = 2181
+ZOOKEEPER_PEER_PORT = 2888
+ZOOKEEPER_LEADER_PORT = 3888
+
 def categorize_node(node_name):
   for name_group in ['zookeeper', 'kafka', 'worker']:
     if name_group in node_name:

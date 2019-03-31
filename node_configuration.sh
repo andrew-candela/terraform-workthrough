@@ -1,3 +1,8 @@
+# these directions seem pretty good:
+# https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-ubuntu-18-04
+
+
+
 # this script installs zookeeper on an ubuntu node
 # see https://medium.com/@ryannel/installing-zookeeper-on-ubuntu-9f1f70f22e25
 # 
@@ -7,7 +12,8 @@
 
 # update apt-get
 sudo apt-get update
-# install java 
+# install java  OpenJDK
+sudo apt install openjdk-8-jdk
 sudo apt-get --assume-yes install default-jre
 # create data dirs
 sudo mkdir -p /data/zookeeper
@@ -49,3 +55,6 @@ systemctl enable kafka
 
 # Zookeeper might be installed in /opt/zookeeper-*
 # need to 
+
+# berkeley kafka binary mirror
+http://mirrors.ocf.berkeley.edu/apache/kafka/2.2.0/kafka_2.12-2.2.0.tgz
