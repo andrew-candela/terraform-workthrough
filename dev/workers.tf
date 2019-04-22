@@ -1,6 +1,6 @@
 module "workers" {
   source       = "../modules/worker"
-  worker_count = 2
+  worker_count = 1
 
   instance_type = "r4.large"
   env           = "dev"

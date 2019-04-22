@@ -27,3 +27,25 @@ Zookeeper on an ubuntu 18.04 machine.
 Zookeeper configuration is similar to Kafka node configuration. I've made an AMI with the base Zookeeper installation - it is installed in `/opt/zookeeper-*` and is owned by the ubuntu user (default user given by amazon AMIs).  
 I have a python script that runs after the EC2 nodes are up that finds all of the public and private IPs of the Kafka and zookeeper nodes. Once it has those IPs, it can build the conf files for the zk nodes.
 
+## Connect Configuration
+Kafka Connect workers need to have whatever plugin Jars needed placed in the directories configured in `plugin.path` in the config file `connect-distributed.properties`. 
+
+Connect notes:
+
+    echo '{
+      "name":"attribute_sink",
+      "config":{
+        "connector.class":"JdbcSinkConnector",
+        "connection.url":"jdbc:postgresql://{hostname}:{port}/{database_name}?user={un}&password={pw}",
+        "insert.mode":"insert",
+        "table.name.format": "kafka_${topic}",
+        "auto.create":true,
+        "auto.evolve":true,
+        "topics":"{topic_list}"
+      }
+    }' | curl -X POST -d @- $IP_OF_CONNECT_WORKER:8083/connectors --header "content-Type:application/json"
+        "pk.mode":"record_value",
+        "pk.fields":"am_id"
+    curl -X DELETE $IP_OF_CONNECT_WORKER:8083/connectors/attribute_sink
+    ~/kafka/bin/kafka-topics.sh --create --zookeeper $BROKER_IP:2181 --replication-factor 1 --partitions 1 --topic attributes
+    curl -X PUT -d {$var} $IP_OF_CONNECT_WORKER:8083/connector-plugins/JdbcSinkConnector/config/validate --header "content-Type:application/json"

@@ -1,8 +1,12 @@
-from kafka import KafkaConsumer
-# from ..node_configuration.node_discovery import * 
+from lib.node_discovery import NodeDiscovery
+from lib.node_configuration import *
 
-# topic = 'TutorialTopic'
-# PRIVATE_BROKER_ADDRESS = '172.31.2.162:9092'
+def configure_nodes():
+  nd = NodeDiscovery()
+  nd.find_nodes()
+
+  topic = 'attributes_2'
+  PRIVATE_BROKER_ADDRESSES = nd.
 # PUBLIC_BROKER_ADDRESS = '54.183.102.190:9092'
 # client_id = 1
 
